@@ -13,6 +13,7 @@ Used to work on the burger company but recently patched aswell. They are way too
 It will initialize 4 "Unknown Disk" for meme purposes.
 
 If you want to make it work again, taking control of the disk above are mandatory, good luck have fun.
+
 It will eventually fuck the boot time on this state, this is also fixable.
 
 Credit : ekknod, Ulf Frisk, Spiderman
