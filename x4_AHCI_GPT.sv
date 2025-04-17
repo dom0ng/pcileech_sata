@@ -70,6 +70,13 @@ module x4_AHCI_GPT(
                 16'h0120 : rd_rsp_data <= 32'h00000001;  // Port 0 Command Status
                 16'h0124 : rd_rsp_data <= 32'h00000001;  // Port 0 Task File Data
                 16'h0128 : rd_rsp_data <= 32'h00000113;  // Port 0 Signature
+				
+				
+				 // Port 0 Registers
+                // 16'h0100: rd_rsp_data <= 32'h000001FF;  // Port 0 Status (Phy offline)
+                // 16'h0104: rd_rsp_data <= 32'h00000000;  // Port 0 - No external SATA
+                // 16'h0108: rd_rsp_data <= 32'h00000000;  // Port 0 - No hot plug
+                // 16'h010C: rd_rsp_data <= 32'h00000000;  // Reserved
 
                 // Port 1 Registers
                 16'h0180 : rd_rsp_data <= 32'hC0004000;  // Port 1 Command List Base Address
@@ -79,6 +86,12 @@ module x4_AHCI_GPT(
                 16'h01A0 : rd_rsp_data <= 32'h00000001;  // Port 1 Command Status
                 16'h01A4 : rd_rsp_data <= 32'h00000001;  // Port 1 Task File Data
                 16'h01A8 : rd_rsp_data <= 32'h00000113;  // Port 1 Signature
+				
+				// Port 1 Registers
+                // 16'h0180: rd_rsp_data <= 32'h000001FF;  // Port 1 Status (Phy offline)
+                // 16'h0184: rd_rsp_data <= 32'h00000000;  // Port 1 - No external SATA
+                // 16'h0188: rd_rsp_data <= 32'h00000000;  // Port 1 - No hot plug
+                // 16'h018C: rd_rsp_data <= 32'h00000000;  // Reserved
 
                 // Port 2 Registers
                 16'h0200 : rd_rsp_data <= 32'hC0008000;  // Port 2 Command List Base Address
@@ -88,6 +101,12 @@ module x4_AHCI_GPT(
                 16'h0220 : rd_rsp_data <= 32'h00000001;  // Port 2 Command Status
                 16'h0224 : rd_rsp_data <= 32'h00000001;  // Port 2 Task File Data
                 16'h0228 : rd_rsp_data <= 32'h00000113;  // Port 2 Signature
+				
+				// Port 2 Registers
+                // 16'h0200: rd_rsp_data <= 32'h000001FF;  // Port 2 Status (Phy offline)
+                // 16'h0204: rd_rsp_data <= 32'h00000000;  // Port 2 - No external SATA
+                // 16'h0208: rd_rsp_data <= 32'h00000000;  // Port 2 - No hot plug
+                // 16'h020C: rd_rsp_data <= 32'h00000000;  // Reserved
 
                 // Port 3 Registers
                 16'h0280 : rd_rsp_data <= 32'hC000C000;  // Port 3 Command List Base Address
@@ -97,12 +116,18 @@ module x4_AHCI_GPT(
                 16'h02A0 : rd_rsp_data <= 32'h00000001;  // Port 3 Command Status
                 16'h02A4 : rd_rsp_data <= 32'h00000001;  // Port 3 Task File Data
                 16'h02A8 : rd_rsp_data <= 32'h00000113;  // Port 3 Signature
+				
+				// Port 3 Registers
+                // 16'h0280: rd_rsp_data <= 32'h000001FF;  // Port 3 Status (Phy offline)
+                // 16'h0284: rd_rsp_data <= 32'h00000000;  // Port 3 - No external SATA
+                // 16'h0288: rd_rsp_data <= 32'h00000000;  // Port 3 - No hot plug
+                // 16'h028C: rd_rsp_data <= 32'h00000000;  // Reserved
 
                 default : rd_rsp_data <= 32'h0;
             endcase
         end else if (dwr_valid) begin
             case (({dwr_addr[31:24], dwr_addr[23:16], dwr_addr[15:08], dwr_addr[07:00]} - (base_address_register & 32'hFFFFFFF0)) & 32'hFFFF)
-                16'h0020: begin // GHC register
+                16'h0020: begin // 
                     if (dwr_be[0]) cmd <= dwr_data[7:0];
                 end
                 default: begin end
