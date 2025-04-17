@@ -9,4 +9,6 @@ Experimental and patched an all major AC(s)
 
 Used to work on the burger company but recently patched aswell. They are way too accurate.
 
+It will initialize 4 "Unknown Disk" for meme purposes.
+
 Credit : ekknod, Ulf Frisk, Spiderman
